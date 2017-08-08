@@ -25,6 +25,6 @@ COPY requirements.txt "$INSTALL_DIR/"
 
 RUN pip install -r requirements.txt
 
-COPY $SERVER_SRC $INSTALL_DIR
+# COPY $SERVER_SRC $INSTALL_DIR
 
 # ENV DJANGO_SETTINGS_MODULE "website.dev_settings"
