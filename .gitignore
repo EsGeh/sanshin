@@ -1,6 +1,9 @@
 # vim backup files
 *.swp
 
+/src/media
+/src/sanshin/static
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

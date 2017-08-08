@@ -4,7 +4,17 @@
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
 {% block logo %}
-	{% placeholder "logo" %}
+	<div class="col-lg-2">
+	{% static_placeholder "logo_img" %}
+	</div>
+	<div class="col-lg-8 text-center">
+		<h1 >
+		{% static_placeholder "company" %}
+		</h1>
+	</div>
+	<div class="col-lg-2">
+	{% static_placeholder "logo_img" %}
+	</div>
 {% endblock logo %}
 
 {% block content %}

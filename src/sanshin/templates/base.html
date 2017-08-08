@@ -1,4 +1,5 @@
 {% load static cms_tags menu_tags sekizai_tags %}
+{% placeholder "background" %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE}}">
 
@@ -17,10 +18,18 @@
 
 		<!-- Custom CSS -->
 		<style>
-		body {
-				padding-top: 70px;
-				/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-		}
+			body {
+					padding-top: 70px;
+					/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+			}
+			#logo {
+				background-color: black;
+				color: white;
+			}
+			#content { }
+			div {
+				/* border: 1px solid black; */
+			}
 		</style>
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,7 +42,9 @@
 		{% render_block "css" %}
 </head>
 
-<body>
+<body
+>
+
 		{% cms_toolbar %}
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -48,8 +59,9 @@
 				</div>
 				<!-- /.container -->
 		</nav>
-		<!-- Page Content -->
-		<div class="container">
+
+		<!-- Logo Header-->
+		<div class="container" id="logo">
 				<div class="row">
 					{% block logo %}{% endblock logo %}
 				</div>
@@ -58,15 +70,15 @@
 		<!-- /.container -->
 
 		<!-- Page Content -->
-		<div class="container">
-				<div class="row">
-						<div class="col-lg-12 text-center">
-            	{% block content %} this is the content{% endblock content %}
-						</div>
-				</div>
-				<!-- /.row -->
+		<div
+			class="container" id="content"
+			style="min-height:50rem; background-image:url('{% static "img/S.D.B-webside2.jpg" %}');background-size:contain"
+		>
+			{% block content %} this is the content{% endblock content %}
 		</div>
 		<!-- /.container -->
+
+		<!-- Footer -->
 		<footer>
 			<div class="col-lg-12">
 				{% block footer %} this is the content{% endblock footer %}
@@ -80,6 +92,7 @@
 		<script src="{% static "js/bootstrap.min.js" %}"></script>
 
 		{% render_block "js" %}
+
 </body>
 
 </html>
