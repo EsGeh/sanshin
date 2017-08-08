@@ -3,10 +3,14 @@
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
+{% block logo %}
+	{% placeholder "logo" %}
+{% endblock logo %}
+
 {% block content %}
 	{% placeholder "content" %}
 {% endblock content %}
 
 {% block footer %}
-{% static_placeholder "Footer" %}
+{% static_placeholder "footer" %}
 {% endblock footer %}
