@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    container_name: db
+  web:
+    depends_on:
+      - db
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src:/sanshin/server
+      - ./media:/sanshin/media
+    ports:
+      - "8000:8000"
+    container_name: web_server
