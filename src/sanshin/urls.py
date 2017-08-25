@@ -10,9 +10,13 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
+from django.contrib.auth import views as auth_views
+
 admin.autodiscover()
 
 urlpatterns = [
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url( r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}} ),
 ]
 
