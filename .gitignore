@@ -1,6 +1,9 @@
 # vim backup files
 *.swp
 
+/dump
+/src/sanshin/settings/production.py
+
 /src/media
 /src/sanshin/static
 
