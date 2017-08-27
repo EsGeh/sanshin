@@ -12,11 +12,22 @@ from django.views.static import serve
 
 from django.contrib.auth import views as auth_views
 
+from wiki.urls import get_pattern as get_wiki_pattern
+from django_nyt.urls import get_pattern as get_nyt_pattern
+
+
 admin.autodiscover()
 
 urlpatterns = [
+        # wiki:
+    url(r'^wiki/notifications/', get_nyt_pattern()),
+    url(r'wiki/', get_wiki_pattern()),
+
+    # user auth:
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
+
+    # xml sitemap by django cms:
     url( r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}} ),
 ]
 

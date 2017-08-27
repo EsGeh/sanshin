@@ -26,19 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(u(3308fs-jb09m_3y31)g-_3vu6)%chrxyoz=7xale8qt0icc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
-
-
-
-
 ROOT_URLCONF = 'sanshin.urls'
-
 
 
 WSGI_APPLICATION = 'sanshin.wsgi.application'
@@ -106,6 +99,8 @@ TEMPLATES = [
 
 
 MIDDLEWARE_CLASSES = (
+    "sanshin.restricted_access.RequireLoginMiddleware",
+
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -117,7 +112,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware'
+    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 INSTALLED_APPS = (
@@ -148,6 +143,19 @@ INSTALLED_APPS = (
     'djangocms_googlemap',
     'djangocms_video',
     'aldryn_bootstrap3',
+
+    # include the wiki:
+    # 'django.contrib.sites',
+    'django.contrib.humanize',
+    'django_nyt',
+    'mptt',
+    # 'sekizai',
+    'sorl.thumbnail',
+    'wiki',
+    'wiki.plugins.attachments',
+    'wiki.plugins.notifications',
+    'wiki.plugins.images',
+    'wiki.plugins.macros',
 
     'sanshin'
 )
@@ -212,4 +220,11 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
+# settings for user authentification
 LOGIN_REDIRECT_URL = '/'
+
+# wiki settings:
+WIKI_ACCOUNT_HANDLING = False
+# WIKI_ACCOUNT_SIGNUP_ALLOWED = True
+# from django.core.urlresolvers import reverse_lazy
+# LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})

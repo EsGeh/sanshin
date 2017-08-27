@@ -21,4 +21,6 @@ django-sekizai>=0.9
 six
 psycopg2
 
+wiki
+
 aldryn-bootstrap3
