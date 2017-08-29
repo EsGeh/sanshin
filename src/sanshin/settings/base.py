@@ -192,11 +192,6 @@ CMS_TEMPLATES = (
 CMS_PERMISSION = True
 
 CMS_PLACEHOLDER_CONF = {
-    'background_image': {
-        'plugins': ['FilerImagePlugin'],
-        'name': 'Background Image',
-        'limits': {'global': 1},
-    },
 }
 
 DATABASES = {
