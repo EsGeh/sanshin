@@ -1,8 +1,10 @@
 #!/bin/bash
 
 
-OUTPUT_DIR=/sanshin/dump
-OUTPUT_FILENAME="local_$(date +'%Y_%m_%d_%H_%M_%S').json"
+OUTPUT_DIR=~/sanshin-dump
+OUTPUT_FILENAME="production_$(date +'%Y_%m_%d_%H_%M_%S').json"
+
+mkdir -p "$OUTPUT_DIR"
 
 # the order has to be correct!!
 ALL_PLUGINS="auth cms \
@@ -44,4 +46,8 @@ wiki"
 # wiki.plugins.images
 # wiki.plugins.macros
 
-docker-compose run web bash -c "python manage.py dumpdata --natural-foreign --exclude auth.permission --exclude contenttypes --output $OUTPUT_DIR/$OUTPUT_FILENAME $ALL_PLUGINS"
+
+source env/bin/activate
+cd src
+
+python manage.py dumpdata --natural-foreign --exclude auth.permission --exclude contenttypes --output $OUTPUT_DIR/$OUTPUT_FILENAME $ALL_PLUGINS

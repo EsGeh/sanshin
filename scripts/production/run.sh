@@ -56,4 +56,3 @@ else
 	echo "service is already running!"
 	exit 1
 fi
-

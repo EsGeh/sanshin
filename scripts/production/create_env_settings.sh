@@ -18,6 +18,7 @@ cat << __EOF__>"$OUTPUT_FILE"
 export DJANGO_URL=$DJANGO_URL
 export DJANGO_PORT=$DJANGO_PORT
 export DJANGO_HTACCESS_PATH=/var/www/virtual/$USER/$DJANGO_URL/.htaccess
+export DJANGO_SETTINGS_MODULE=sanshin.settings.production
 __EOF__
 
 echo "created '$OUTPUT_FILE' with the following content:"
