@@ -19,7 +19,7 @@ from django_nyt.urls import get_pattern as get_nyt_pattern
 admin.autodiscover()
 
 urlpatterns = [
-        # wiki:
+    # wiki:
     url(r'^wiki/notifications/', get_nyt_pattern()),
     url(r'wiki/', get_wiki_pattern()),
 

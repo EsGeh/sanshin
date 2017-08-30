@@ -116,6 +116,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 INSTALLED_APPS = (
+    'sanshin',
+
     'djangocms_admin_style',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -156,8 +158,6 @@ INSTALLED_APPS = (
     'wiki.plugins.notifications',
     'wiki.plugins.images',
     'wiki.plugins.macros',
-
-    'sanshin'
 )
 
 LANGUAGES = (
