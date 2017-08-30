@@ -4,7 +4,7 @@
 /dump
 /src/sanshin/settings/production.py
 
-/src/media
+/src/sanshin/media
 /src/sanshin/static
 
 # Byte-compiled / optimized / DLL files

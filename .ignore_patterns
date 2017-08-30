@@ -2,3 +2,6 @@
 .gitignore
 db_data
 material
+dump
+src/sanshin/media
+src/sanshin/static

@@ -1,17 +1,20 @@
 #!/bin/bash
 
-JSON_DUMP=sanshin-dump/production_2017_08_29_11_48_00.json
-
-DUMP_DIR=dump
+DUMP_DIR=
 DUMP_VOLUME=/sanshin/dump
 
+DUMP_FILENAME="production_dump.json"
+DUMP_MEDIA_FILENAME="production_media"
+DUMP_STATIC_FILENAME="production_static"
+DUMP_SQL_DUMP="production_sqldump.sql"
+
 function print_help {
-	echo -e "usage: $0 [OPTIONS...] [JSON_DUMP]"
+	echo -e "usage: $0 [OPTIONS...] DUMP_DIR"
 	echo
 	echo "imports a data snapshot"
 	echo
 	echo -e "arguments:"
-	echo -e "\tJSON_DUMP: location of database dump in $DUMP_DIR"
+	echo -e "\tDUMP_DIR location of dump"
 }
 
 while [[ $# > 0 ]]; do
@@ -32,12 +35,15 @@ while [[ $# > 0 ]]; do
 done
 
 if [[ "$#" == 1 ]]; then
-	JSON_DUMP="$1"
+	DUMP_DIR="$1"
 else
 	print_help
 	exit 1
 fi
 
-
 docker-compose run \
-	--volume "$(pwd)/$DUMP_DIR:$DUMP_VOLUME" web bash -c "python manage.py loaddata $DUMP_VOLUME/$JSON_DUMP"
+	--volume "$(pwd)/$DUMP_DIR:$DUMP_VOLUME" \
+	web bash -c "python manage.py loaddata $DUMP_VOLUME/$JSON_DUMP"
+
+rsync -r "$DUMP_DIR/$DUMP_MEDIA_FILENAME/" src/sanshin/media
+rsync -r "$DUMP_DIR/$DUMP_STATIC_FILENAME/" src/sanshin/static

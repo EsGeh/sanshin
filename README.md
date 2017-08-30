@@ -22,11 +22,13 @@ In order to be able to install and run the server, please install these dependen
 
 ## prerequisites
 
-- install static data
-- import database dump
-- apply migrations
+1.  apply migrations
 
 	$ ./scripts/migrate.sh
+
+2. import snapshot
+
+	$ ./scripts/import_data.sh <snapshot_dir>
 
 ## run server
 
@@ -57,9 +59,13 @@ In order to be able to install and run the server, please install these dependen
 		$ ssh <uberspace address>
 		$ cd sanshin
 
-4. import database dump
+4. migrate database
 
-		$ ./scripts/production/import_data.sh
+		$ ./scripts/production/migrate.sh
+
+5. import a snapshot
+
+		$ ./scripts/production/import_data.sh <snapshot_dir>
 
 ## control server on uberspace
 
