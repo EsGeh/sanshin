@@ -55,39 +55,39 @@
 		</div>
 	</nav>
 
-		<!-- Logo Header-->
-		<div class="container logo">
-				<div class="row">
-					{% block logo %}{% endblock logo %}
-				</div>
-				<!-- /.row -->
+	<!-- Logo Header-->
+	<div class="container logo">
+		<div class="row">
+			{% block logo %}{% endblock logo %}
 		</div>
-		<!-- /.container -->
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
 
-		<div id="separator"> </div>
+	<div id="separator"> </div>
 
-		<!-- Page Content -->
-		<div
-			class="container content" id="content"
-		>
-			{% block content %} this is the content{% endblock content %}
+	<!-- Page Content -->
+	<div
+		class="container content" id="content"
+	>
+		{% block content %} this is the content{% endblock content %}
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<footer>
+		<div class="col-lg-12">
+			{% block footer %} this is the content{% endblock footer %}
 		</div>
-		<!-- /.container -->
+	</footer>
 
-		<!-- Footer -->
-		<footer>
-			<div class="col-lg-12">
-				{% block footer %} this is the content{% endblock footer %}
-			</div>
-		</footer>
+	<!-- jQuery Version 1.11.1 -->
+	<script src="{% static "js/jquery.js" %}"></script>
 
-		<!-- jQuery Version 1.11.1 -->
-		<script src="{% static "js/jquery.js" %}"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="{% static "js/bootstrap.min.js" %}"></script>
-
-		{% render_block "js" %}
+	{% render_block "js" %}
 
 </body>
 
