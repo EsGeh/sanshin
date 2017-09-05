@@ -7,8 +7,6 @@ OUTPUT_MEDIA_FILENAME="media"
 OUTPUT_STATIC_FILENAME="static"
 OUTPUT_SQL_DUMP="sqldump.sql"
 
-#DB_USER=django
-
 mkdir -p "$OUTPUT_DIR"
 
 # the order has to be correct!!
@@ -59,7 +57,7 @@ echo "saving django dump to '$OUTPUT_DIR/$OUTPUT_FILENAME'..."
 python manage.py dumpdata --natural-foreign --exclude auth.permission --exclude contenttypes --output "$OUTPUT_DIR/$OUTPUT_FILENAME" $ALL_PLUGINS
 
 echo "saving sql dump to '$OUTPUT_DIR/$OUTPUT_SQL_DUMP'..."
-pg_dump > "$OUTPUT_DIR/$OUTPUT_SQL_DUMP"
+pg_dump -U $DB_USER > "$OUTPUT_DIR/$OUTPUT_SQL_DUMP"
 
 echo "saving media dir to '$OUTPUT_DIR/$OUTPUT_MEDIA_FILENAME'..."
 rsync -r sanshin/media "$OUTPUT_DIR/$OUTPUT_MEDIA_FILENAME"

@@ -3,10 +3,10 @@
 DUMP_DIR=
 DUMP_VOLUME=/sanshin/dump
 
-DUMP_FILENAME="production_dump.json"
-DUMP_MEDIA_FILENAME="production_media"
-DUMP_STATIC_FILENAME="production_static"
-DUMP_SQL_DUMP="production_sqldump.sql"
+DUMP_FILENAME="dump.json"
+DUMP_MEDIA_FILENAME="media"
+DUMP_STATIC_FILENAME="static"
+DUMP_SQL_DUMP="sqldump.sql"
 
 function print_help {
 	echo -e "usage: $0 [OPTIONS...] DUMP_DIR"
@@ -43,7 +43,7 @@ fi
 
 docker-compose run \
 	--volume "$(pwd)/$DUMP_DIR:$DUMP_VOLUME" \
-	web bash -c "python manage.py loaddata $DUMP_VOLUME/$JSON_DUMP"
+	web bash -c "python manage.py loaddata $DUMP_VOLUME/$DUMP_FILENAME"
 
 rsync -r "$DUMP_DIR/$DUMP_MEDIA_FILENAME/" src/sanshin/media
 rsync -r "$DUMP_DIR/$DUMP_STATIC_FILENAME/" src/sanshin/static
