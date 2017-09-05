@@ -24,3 +24,5 @@ psycopg2
 wiki
 
 aldryn-bootstrap3
+
+djangocms-forms

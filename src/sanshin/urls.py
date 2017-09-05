@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
 
+    url(r'^', include('djangocms_forms.urls')),
+
     # xml sitemap by django cms:
     url( r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}} ),
 ]

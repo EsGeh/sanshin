@@ -158,6 +158,9 @@ INSTALLED_APPS = (
     'wiki.plugins.notifications',
     'wiki.plugins.images',
     'wiki.plugins.macros',
+
+    # djangocms-forms
+    'djangocms_forms',
 )
 
 LANGUAGES = (
